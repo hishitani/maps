@@ -15,7 +15,7 @@ const mobileSwipe = () => {
 	});
 
 
-	container.addEventListener("touchmove", function (event) {
+	swipeDown.addEventListener("touchmove", function (event) {
 		if (!isSwiping) return;
 
 		const endY = event.changedTouches[0].clientY;
@@ -23,10 +23,10 @@ const mobileSwipe = () => {
 		const detail = document.querySelector('.street__block-detail');
 		if (deltaY > 0) {
 			// Внизовй свайп - удаление элементов
-			const hideElements = Array.from(container.getElementsByClassName("hide-element"));
+			const hideElements = Array.from(swipeDown.getElementsByClassName("hide-element"));
 			const disable = document.querySelectorAll('.disable');
 			
-			container.style.transform = 'translate(0px, 450px)';
+			swipeDown.style.transform = 'translate(0px, 450px)';
 			hideElements.forEach(item => {
 				item.classList.add('hiden')
 			});
@@ -40,12 +40,12 @@ const mobileSwipe = () => {
 
 		} else {
 			// Верхний свайп - возвращение элементов на место
-			const removedElements = Array.from(container.getElementsByClassName("hide-element"));
+			const removedElements = Array.from(swipeDown.getElementsByClassName("hide-element"));
 
 			const blockOne = document.querySelector(".item1");
 			const blockTwo = document.querySelector(".item2");
 
-			container.style.transform = 'translate(0px, 0px)';
+			swipeDown.style.transform = 'translate(0px, 0px)';
 
 			removedElements.forEach(item => {
 				item.classList.remove('hiden');
@@ -67,7 +67,7 @@ const mobileSwipe = () => {
 
 		function resetElements() {
 			if(!isReset) {
-				container.style.transform = 'translate(0px, 0px)';
+				swipeDown.style.transform = 'translate(0px, 0px)';
 				isReset = true;
 			} 
 		}
